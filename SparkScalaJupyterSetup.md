@@ -46,9 +46,3 @@ val neo = Neo4j(sc)
 val rdd = neo.cypher("MATCH (n:Medicine) RETURN n as id ").loadRowRdd
 rdd.count
 ```
-
-#Intitializing Scala interpreter ...
-#Spark Web UI available at http://kuns-mbp.lan:4040
-#SparkContext available as 'sc' (version = 2.4.0, master = local[*], app id = local-1552095553143)
-#SparkSession available as 'spark'
-```
