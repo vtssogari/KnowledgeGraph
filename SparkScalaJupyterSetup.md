@@ -14,16 +14,14 @@ export ALMOND_VERSION=0.3.1
 ## install Almond
 
 ```
-curl -Lo coursier https://git.io/coursier-cli
-chmod +x coursier
-./coursier bootstrap \
-    -r jitpack \
-    -i user -I user:sh.almond:scala-kernel-api_$SCALA_VERSION:$ALMOND_VERSION \
-    sh.almond:scala-kernel_$SCALA_VERSION:$ALMOND_VERSION \
-    -o almond
-    
-./almond --install
+pip install spylon-kernel
+# or
+conda install -c conda-forge spylon-kernel
 
+python -m spylon_kernel install
 
-jupyter kernelspec list
+#Intitializing Scala interpreter ...
+#Spark Web UI available at http://kuns-mbp.lan:4040
+#SparkContext available as 'sc' (version = 2.4.0, master = local[*], app id = local-1552095553143)
+#SparkSession available as 'spark'
 ```
