@@ -25,20 +25,27 @@ python -m spylon_kernel install
 
 ## Notebook
 ```
-
 %%init_spark
-
-// Neo4J connector
-launcher.conf.set("spark.neo4j.bolt.url", "bolt://127.0.0.1:7687")
-launcher.conf.set("spark.neo4j.bolt.user", "neo4j")
-launcher.conf.set("spark.neo4j.bolt.password", "neo4j")
+launcher.conf.set("spark.neo4j.bolt.url", "bolt://localhost:7687")
+launcher.conf.set("spark.neo4j.bolt.user", "")
+launcher.conf.set("spark.neo4j.bolt.password", "")
 
 launcher.num_executors = 2
 launcher.executor_cores = 2
 launcher.driver_memory = '4g'
 launcher.packages = ["neo4j-contrib:neo4j-spark-connector:2.4.0-M6"]
+```
 
+```
+spark
 
+import org.neo4j.spark._
+
+val neo = Neo4j(sc)
+
+val rdd = neo.cypher("MATCH (n:Medicine) RETURN n as id ").loadRowRdd
+rdd.count
+```
 
 #Intitializing Scala interpreter ...
 #Spark Web UI available at http://kuns-mbp.lan:4040
