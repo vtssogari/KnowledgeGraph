@@ -27,10 +27,17 @@ python -m spylon_kernel install
 ```
 
 %%init_spark
+
+// Neo4J connector
+launcher.conf.set("spark.neo4j.bolt.url", "bolt://127.0.0.1:7687")
+launcher.conf.set("spark.neo4j.bolt.user", "neo4j")
+launcher.conf.set("spark.neo4j.bolt.password", "neo4j")
+
 launcher.num_executors = 2
 launcher.executor_cores = 2
 launcher.driver_memory = '4g'
 launcher.packages = ["neo4j-contrib:neo4j-spark-connector:2.4.0-M6"]
+
 
 
 #Intitializing Scala interpreter ...
