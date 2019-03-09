@@ -5,6 +5,10 @@ LOAD CSV WITH HEADERS from 'file:///product.txt' as row
 FIELDTERMINATOR '\t'
 CREATE (n:Medicine)
 SET n = row
+
+CREATE INDEX ON :Medicine(PRODUCTID)
+
+
 ```
 
 ## Querying
